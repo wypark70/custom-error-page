@@ -11,14 +11,50 @@
     <resource type="i18n" name="i18n" location="custom-error-page"/>
     
     <!-- add our web resources -->
-    <web-resource key="custom-error-page-resources" name="custom-error-page Web Resources">
+    <web-resource key="custom-error-general-resources" name="Custom error general Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
-        <resource type="download" name="custom-error-page.css" location="/css/custom-error-page.css"/>
-        <resource type="download" name="custom-error-page.js" location="/js/custom-error-page.js"/>
-        <resource type="download" name="images/" location="/images"/>
-
-        <context>custom-error-page</context>
+        <resource type="download" name="custom-error-general.css" location="/css/custom-error-general.css"/>
+        <resource type="download" name="custom-error-general.js" location="/js/custom-error-general.js"/>
+        <context>atl.general</context>
     </web-resource>
-    
+
+    <web-resource key="custom-not-space-member-resources" name="Custom not space member Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="custom-not-space-member.css" location="/css/custom-not-space-member.css"/>
+        <resource type="download" name="custom-not-space-member.js" location="/js/custom-not-space-member.js"/>
+    </web-resource>
+
+    <web-resource key="custom-page-not-found-resources" name="Custom page not found Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="custom-page-not-found.css" location="/css/custom-page-not-found.css"/>
+        <resource type="download" name="custom-page-not-found.js" location="/js/custom-page-not-found.js"/>
+    </web-resource>
+
+    <web-resource key="custom-permission-not-found-resources" name="Custom permission not found Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="custom-permission-not-found.css" location="/css/custom-permission-not-found.css"/>
+        <resource type="download" name="custom-permission-not-found.js" location="/js/custom-permission-not-found.js"/>
+    </web-resource>
+
+    <web-resource key="custom-deleted-page-resources" name="Custom deleted page Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="custom-deleted-page.css" location="/css/custom-deleted-page.css"/>
+        <resource type="download" name="custom-deleted-page.js" location="/js/custom-deleted-page.js"/>
+    </web-resource>
+
+    <xwork key="custom-error-page-actions" name="Custom error page actions">
+        <package name="Custom error page" extends="default" namespace="/plugins/custom-error-page">
+            <action name="page-not-found" class="com.samsungds.confluence.errorpage.action.CustomPageNotFoundAction">
+                <result name="not-space-member" type="velocity">/templates/custom-not-space-member.vm</result>
+                <result name="success" type="velocity">/templates/custom-page-not-found.vm</result>
+            </action>
+            <action name="permission-not-found" class="com.samsungds.confluence.errorpage.action.CustomPermissionNotFoundAction">
+                <result name="success" type="velocity">/templates/custom-permission-not-found.vm</result>
+            </action>
+            <action name="deleted-page" class="com.samsungds.confluence.errorpage.action.CustomDeletedPageAction">
+                <result name="success" type="velocity">/templates/custom-deleted-page.vm</result>
+            </action>
+        </package>
+    </xwork>
+
 </atlassian-plugin>

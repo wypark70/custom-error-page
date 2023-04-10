@@ -1,0 +1,13 @@
+$webResourceManager.requireResource("com.samsungds.confluence.errorpage.custom-error-page:custom-not-space-member-resources")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Not space member</title>
+    <meta name="decorator" content="atl.general"/>
+</head>
+<body>
+<div>$i18n.getText('plugin.name')</div>
+<div>$message</div>
+</body>
+</html>
